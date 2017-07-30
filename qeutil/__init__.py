@@ -279,12 +279,12 @@ class QuantumEspresso(FileIOCalculator):
                     except TypeError:
                         # cell data not in order just clear the mess
                         del(self.results['cell'])
-                if 'atoms_forces' in rk:
+                if 'forces' in rk:
                     # Translate from the Ry/au of QE to the eV/A units of ASE
                     try :
-                        self.results['forces']=array(self.results['atoms_forces'])*(ase.units.Rydberg/ase.units.Bohr)
+                        self.results['forces']=array(self.results['forces'])*(ase.units.Rydberg/ase.units.Bohr)
                     except TypeError :
-                        # atoms_forces are none - ignore.
+                        # forces are none - ignore.
                         pass
 
                 try :
